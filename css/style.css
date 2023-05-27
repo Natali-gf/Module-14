@@ -1,0 +1,105 @@
+body {
+  border: none;
+  margin: 0;
+  padding: 0;
+  font-size: 20px;
+  color: rgb(20, 20, 20);
+}
+
+.task3 {
+  background: linear-gradient(rgba(195, 250, 236, 0.7), rgba(1, 116, 96, 0.7));
+}
+.task3__container {
+  width: 1100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+}
+.task3__title {
+  font-size: 40px;
+  border-radius: 8px;
+  padding: 10px 30px;
+  color: rgba(1, 78, 65, 0.801);
+  box-shadow: 5px 5px 15px rgb(189, 250, 235);
+  width: -moz-fit-content;
+  width: fit-content;
+}
+.task3__title::after {
+  content: "";
+  display: block;
+  height: 5px;
+  width: 100%;
+  background: rgba(1, 78, 65, 0.801);
+}
+.task3__form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.task3__label {
+  font-size: 30px;
+  width: 400px;
+  text-align: center;
+  color: rgb(55, 77, 69);
+}
+.task3__input {
+  outline: none;
+  border: none;
+  height: 40px;
+  width: 200px;
+  margin: 20px;
+  border-radius: 25px;
+  font-size: 20px;
+  text-align: center;
+}
+.task3__button {
+  font-size: 30px;
+  border: 1px solid rgb(182, 247, 241);
+  border-radius: 8px;
+  padding: 10px 37px;
+  background: rgba(1, 78, 65, 0.801);
+  color: rgb(240, 255, 252);
+  box-shadow: 5px 5px 15px rgb(220, 255, 246);
+  width: -moz-fit-content;
+  width: fit-content;
+}
+.task3__button:hover {
+  background: rgba(19, 116, 99, 0.801);
+}
+.task3__error {
+  font-size: 20px;
+  font-weight: 700;
+  color: rgb(196, 12, 12);
+}
+.task3__result {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.result__container {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+}
+.result__image {
+  border-radius: 5px;
+  margin: 40px 15px 0;
+}
+.result__author {
+  margin: -22.5px 0 0 15px;
+  font-style: italic;
+  font-size: 18px;
+  text-align: right;
+  width: -moz-fit-content;
+  width: fit-content;
+  background: linear-gradient(rgba(171, 255, 234, 0.925), rgba(45, 145, 128, 0.856));
+  box-shadow: 2px -2px 5px rgba(177, 255, 235, 0.712);
+  color: rgb(1, 59, 50);
+  padding: 0 10px;
+  border-radius: 2px;
+}
+
+.hidden {
+  display: none;
+}
