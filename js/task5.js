@@ -48,19 +48,21 @@ function getPicture(e) {
 	}
 
 }
-useRequest()
+
 function useRequest(url, callback) {
-	fetch('https://picsum.photos/v2/list?page=1&limit=10')
-		.then((response) => response)
-		.then((data) => { callback(data); console.log(data)})
+	fetch(url)
+		.then(response => console.log(response.json()))
+		.then((data) => { callback(data)})
 		.catch(() => console.log('error'))
 }
 
 function showResult(result){
-	htmlResultTask5.innerHTML = '';
-		let resultImage = `
+	result.forEach (elem => {
+		let jsonResult = `
 			<div class="result__box">
-				<img class="result__image_task4" src="${result.url}">
+				<img class="result__image" src="${elem.download_url}" width="500px">
+				<p class="result__author">${elem.author}</p>
 			</div>`;
-		htmlResultTask5.innerHTML = resultImage
+		htmlResultTask5.innerHTML += jsonResult
+	})
 }
