@@ -51,8 +51,10 @@ function getPicture(e) {
 
 function useRequest(url, callback) {
 	fetch(url)
-		.then(response => console.log(response.json()))
-		.then((data) => { callback(data)})
+		.then(response => response.json())
+		.then((data) => {
+			localStorage.setItem('temporaryJson', JSON.stringify(data));
+			return callback(data)})
 		.catch(() => console.log('error'))
 }
 
@@ -66,3 +68,12 @@ function showResult(result){
 		htmlResultTask5.innerHTML += jsonResult
 	})
 }
+showPreviousData()
+function showPreviousData(){
+	let previousJson = localStorage.getItem('temporaryJson')
+	if (previousJson) {
+		showResult(JSON.parse(previousJson))
+	}
+
+}
+
