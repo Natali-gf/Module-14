@@ -20,7 +20,7 @@
 
 
 const buttonTask5 = document.getElementById('buttonTask5')
-const errorMessageTask5 = document.getElementById('errorTask5')
+const errorMessageTask5 = document.getElementById('errorMessageTask5')
 const htmlResultTask5 = document.getElementById('resultTask5')
 
 buttonTask5.addEventListener('click', getPicture)
@@ -30,22 +30,29 @@ function getPicture(e) {
 	let valuePage = document.getElementById('inputPageTask5').value;
 	let valueLimit = document.getElementById('inputLimitTask5').value
 
-	if(valueWidth >= 100 && valueWidth <=300 &&
-		valueHeight >= 100 && valueHeight <=300){
+	if(valuePage > 0 && valuePage <=10 &&
+		valueLimit > 0 && valueLimit <=10){
 		useRequest(`https://picsum.photos/v2/list?page=${valuePage}&limit=${valueLimit}`, showResult)
 		if (!errorMessageTask5.classList.contains('hidden')){
 			errorMessageTask5.classList.add('hidden')
 		}
+	} else if(valuePage > 0 && valuePage <=10) {
+		errorMessageTask5.classList.remove('hidden')
+		errorMessageTask5.textContent = '! Ошибка, лимит вне диапазона от 1 до 10'
+	} else if(valueLimit > 0 && valueLimit <=10) {
+		errorMessageTask5.classList.remove('hidden')
+		errorMessageTask5.textContent = '! Ошибка, номер страницы вне диапазона от 1 до 10'
 	} else {
 		errorMessageTask5.classList.remove('hidden')
+		errorMessageTask5.textContent = '! Ошибка, номер страницы и лимит вне диапазона от 1 до 10'
 	}
 
 }
 useRequest()
 function useRequest(url, callback) {
 	fetch('https://picsum.photos/v2/list?page=1&limit=10')
-		.then((response) => console.log(response.json()))
-		.then((data) => callback(data))
+		.then((response) => response)
+		.then((data) => { callback(data); console.log(data)})
 		.catch(() => console.log('error'))
 }
 

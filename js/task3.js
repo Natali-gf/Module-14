@@ -41,7 +41,6 @@ function useRequest(url, callback) {
 			console.log('Status:', xhr.status);
 		} else {
 			const result = JSON.parse(xhr.response);
-			console.log(result);
 			if (callback) {
 				callback(result)
 			}
