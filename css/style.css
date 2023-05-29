@@ -13,19 +13,21 @@
 }
 
 .choice {
-  font-size: 30px;
-  font-style: italic;
-  font-weight: 600;
   color: rgb(173, 20, 20);
   border: 3px solid rgb(173, 20, 20);
-  display: flex;
-  justify-content: center;
   width: -moz-fit-content;
   width: fit-content;
   padding: 20px 40px;
   margin: 0 auto;
 }
-.choice::after {
+.choice__main-text {
+  font-size: 30px;
+  font-style: italic;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+}
+.choice__main-text::after {
   content: "⤵";
   display: flex;
   align-items: center;
@@ -33,6 +35,11 @@
   font-style: normal;
   rotate: 180deg;
   transform: scale(-1, 1);
+  padding-left: 10px;
+}
+.choice__text {
+  font-size: 17px;
+  font-style: italic;
   padding-left: 10px;
 }
 

@@ -11,26 +11,34 @@
 	padding: 20px;
 }
 .choice {
-	font-size: 30px;
-	font-style: italic;
-	font-weight: 600;
 	color: rgb(173, 20, 20);
 	border: 3px solid rgb(173, 20, 20);
-	display: flex;
-	justify-content: center;
 	width: fit-content;
 	padding: 20px 40px;
 	margin: 0 auto;
-	&::after {
-		content: '\2935';
+	&__main-text{
+		font-size: 30px;
+		font-style: italic;
+		font-weight: 600;
 		display: flex;
-		align-items: center;
-		height: 20px;
-		font-style: normal;
-		rotate: 180deg;
-		transform: scale(-1, 1);
+		justify-content: center;
+		&::after {
+			content: '\2935';
+			display: flex;
+			align-items: center;
+			height: 20px;
+			font-style: normal;
+			rotate: 180deg;
+			transform: scale(-1, 1);
+			padding-left: 10px;
+		}
+	}
+	&__text {
+		font-size: 17px;
+		font-style: italic;
 		padding-left: 10px;
 	}
 }
+
 @import './header-style';
 @import './task-style'
