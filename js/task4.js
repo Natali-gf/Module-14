@@ -1,86 +1,52 @@
 // Задание 4
 
-// Напишите код приложения, интерфейс которого представляет собой input и кнопку. В input можно ввести любое число. При клике на кнопку происходит следующее:
+// Напишите код приложения, интерфейс которого представляет собой 2 input и кнопку submit. В input можно ввести любое число.
 
-// Если число не попадает в диапазон от 1 до 10 — выводить ниже текст «число вне диапазона от 1 до 10».
-// Если число попадает в диапазон от 1 до 10 — сделать запрос c помощью XHR по URL https://picsum.photos/v2/list?limit=10, где get-параметр limit — это введённое число.
-// Пример. Если пользователь ввёл 5, то запрос будет вида: https://picsum.photos/v2/list?limit=5.
-// После получения данных вывести ниже картинки на экран.
-//! У меня не открывалась ссылка-пример, поэтому результат я отобразила на своё усмотрение.
+// При клике на кнопку происходит следующее:
+
+// Если оба числа не попадают в диапазон от 100 до 300 или введено не число — выводить ниже текст «одно из чисел вне диапазона от 100 до 300»;
+// Если числа попадают в диапазон от 100 до 300 — сделать запрос c помощью fetch по URL https://picsum.photos/200/300, где первое число — ширина картинки, второе — высота.
+// Пример. Если пользователь ввёл 150 и 200, то запрос будет вида https://picsum.photos/150/200.
+// После получения данных вывести ниже картинку на экран.
 
 //? Решение
 
 
-// const button = document.querySelector('.task3__button')
-// const errorMessage = document.querySelector('.task3__error')
-// const htmlResult = document.querySelector('.task3__result')
+const buttonTask4 = document.getElementById('buttonTask4')
+const errorMessageTask4 = document.getElementById('errorTask4')
+const htmlResultTask4 = document.getElementById('resultTask4')
 
-// button.addEventListener('click', getPicture)
+buttonTask4.addEventListener('click', getPicture)
 
-// function getPicture(e) {
-// 	e.preventDefault();
-// 	let value = document.querySelector('.task3__input').value
-// console.log(errorMessage.classList.contains('hidden'));
-// 	if(value > 0 && value <=10){
-// 		useRequest('https://picsum.photos/v2/list?limit=10', showResult, value)
-// 		if (!errorMessage.classList.contains('hidden')){
-// 			errorMessage.classList.add('hidden')
-// 		}
-// 	} else {
-// 		errorMessage.classList.remove('hidden')
-// 	}
+function getPicture(e) {
+	e.preventDefault();
+	let valueWidth = document.getElementById('inputWidthTask4').value;
+	let valueHeight = document.getElementById('inputHeightTask4').value
 
-// }
+	if(valueWidth >= 100 && valueWidth <=300 &&
+		valueHeight >= 100 && valueHeight <=300){
+		useRequest(`https://picsum.photos/${valueWidth}/${valueHeight}`, showResult)
+		if (!errorMessageTask4.classList.contains('hidden')){
+			errorMessageTask4.classList.add('hidden')
+		}
+	} else {
+		errorMessageTask4.classList.remove('hidden')
+	}
 
-// // useRequest('https://picsum.photos/v2/list?limit=10', showResult, value)
-// function useRequest(url, callback, number) {
-// 	const xhr = new XMLHttpRequest();
+}
 
-// 	xhr.open('GET', url, true);
+function useRequest(url, callback) {
+	fetch(url)
+		.then((response) => response)
+		.then((data) => callback(data)) //json invalid, невозможно распарсить с этого сайта
+		.catch(() => console.log('error'))
+}
 
-// 	xhr.onload = function(){
-// 		if(xhr.status !=200){
-// 			console.log('Status:', xhr.status);
-// 		} else {
-// 			const result = JSON.parse(xhr.response);
-// 			console.log(result);
-// 			if (callback) {
-// 				callback(result, number)
-// 			}
-// 		}
-// 	}
-// 	xhr.onerror = function(){
-// 		console.log('Error. Status:', xhr.status);
-// 	}
-// 	xhr.send()
-// }
-
-// function showResult(result, number){
-// 	console.log(result[number]);
-// 	let jsonResult = `
-// 			<div class="result__container">
-// 				<img class="result__image" src="${result[--number].download_url}" width="500px">
-// 				<p class="result__author">${result[--number].author}</p>
-// 			</div>`
-// 		htmlResult.innerHTML = jsonResult
-// }
-
-// function useRequest(url, callback, number) {
-	// const xhr2 = new XMLHttpRequest();
-
-	// xhr2.open('GET', 'https://picsum.photos/', true);
-
-	// xhr2.onload = function(){
-	// 	if(xhr2.status !=200){
-	// 		console.log('Status:', xhr2.status);
-	// 	} else {
-	// 		const result = JSON.parse(xhr2.response);
-	// 		console.log(result);
-
-	// 	}
-	// }
-	// xhr2.onerror = function(){
-	// 	console.log('Error. Status:', xhr2.status);
-	// }
-	// xhr2.send()
-
+function showResult(result){
+	htmlResultTask4.innerHTML = '';
+		let resultImage = `
+			<div class="result__box">
+				<img class="result__image_task4" src="${result.url}">
+			</div>`;
+		htmlResultTask4.innerHTML = resultImage
+}

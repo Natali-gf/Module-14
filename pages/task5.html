@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="../css/style.css">
+	<title>Задание 5</title>
+</head>
+<body>
+	<header class="tasks">
+		<nav class="tasks__nav">
+			<ul class="tasks__list">
+				<li class="tasks__item">
+					<a href="./task3.html" class="tasks__link">Задание 3</a>
+				</li>
+				<li class="tasks__item">
+					<a href="./task4.html" class="tasks__link">Задание 4</a>
+				</li>
+				<li class="tasks__item">
+					<a href="#" class="tasks__link">Задание 5</a>
+				</li>
+			</ul>
+		</nav>
+	</header>
+	<div >
+		<div class="task">
+			<div class="task__container">
+				<form class="task__form" action="">
+					<label class="task__label" for="inputPageTask5">Номер страницы</label>
+					<input class="task__input" id="inputPageTask5" type="text">
+					<label class="task__label" for="inputLimitTask5">Лимит</label>
+					<input class="task__input" id="inputLimitTask5" type="text">
+					<button id="buttonTask5" class="task__button">Запрос</button>
+					<div id="errorMessageTask5" class="task__error hidden"></div>
+
+
+					<div id="errorPageTask5" class="task__error hidden">! Ошибка, номер страницы вне диапазона от 1 до 10</div>
+					<div id="errorPageTask5" class="task__error hidden">! Ошибка, лимит вне диапазона от 1 до 10</div>
+					<div id="errorPageTask5" class="task__error hidden">! Ошибка, номер страницы и лимит вне диапазона от 1 до 10</div>
+				</form>
+				<div id="resultTask5" class="task__result" type="submit"></div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="../js/task5.js"></script>
+</body>
+</html>

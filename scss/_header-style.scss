@@ -1,0 +1,39 @@
+.tasks {
+	background: linear-gradient(rgba(195, 250, 236, 0.7), rgba(1, 116, 96, 0.7));
+	&__nav {
+
+	}
+	&__list {
+		display: flex;
+		justify-content: center;
+		list-style: none;
+	}
+	&__item {
+		width: fit-content;
+	}
+	&__link {
+		display: inline-block;
+		font-size: 42px;
+		border-radius: 8px;
+		padding: 10px 30px;
+		color:rgba(1, 78, 65, 0.801);
+		width: fit-content;
+		text-decoration: none;
+		cursor: pointer;
+		&:hover {
+			color:rgba(0, 110, 92, 0.801);
+		}
+		&::after {
+			content: '';
+			display: block;
+			height: 4.5px;
+			width: 100%;
+			background: rgba(1, 78, 65, 0.801);
+			box-shadow: 1px 1px 8px rgba(189, 250, 235, 0.623);
+		}
+	}
+}
+
+.hidden {
+	display: none;
+}
