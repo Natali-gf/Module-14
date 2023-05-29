@@ -11,13 +11,13 @@
 
 //? Решение
 
-
+//elements DOM
 const buttonTask4 = document.getElementById('buttonTask4')
 const errorMessageTask4 = document.getElementById('errorTask4')
 const htmlResultTask4 = document.getElementById('resultTask4')
-
+//button's behavior
 buttonTask4.addEventListener('click', getPicture)
-
+//functions
 function getPicture(e) {
 	e.preventDefault();
 	let valueWidth = document.getElementById('inputWidthTask4').value;
@@ -32,7 +32,6 @@ function getPicture(e) {
 	} else {
 		errorMessageTask4.classList.remove('hidden')
 	}
-
 }
 
 function useRequest(url, callback) {

@@ -9,13 +9,13 @@
 
 //? Решение
 
-
+//elements DOM
 const buttonTask3 = document.getElementById('buttonTask3')
 const errorMessageTask3 = document.getElementById('errorTask3')
 const htmlResultTask3 = document.getElementById('resultTask3')
-
+//button's behavior
 buttonTask3.addEventListener('click', getPicture)
-
+//functions
 function getPicture(e) {
 	e.preventDefault();
 	let value = document.getElementById('inputTask3').value
@@ -63,4 +63,3 @@ function showResult(result){
 		htmlResultTask3.innerHTML += jsonResult
 	})
 }
-

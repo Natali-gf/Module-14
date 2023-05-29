@@ -19,20 +19,22 @@
 //? Решение
 
 
+//elements DOM
 const buttonTask5 = document.getElementById('buttonTask5')
 const errorMessageTask5 = document.getElementById('errorMessageTask5')
 const htmlResultTask5 = document.getElementById('resultTask5')
-
+//button's behavior
 buttonTask5.addEventListener('click', getPicture)
 
+//functions
 function getPicture(e) {
 	e.preventDefault();
 	let valuePage = document.getElementById('inputPageTask5').value;
-	let valueLimit = document.getElementById('inputLimitTask5').value
+	let valueLimit = document.getElementById('inputLimitTask5').value;
 
 	if(valuePage > 0 && valuePage <=10 &&
 		valueLimit > 0 && valueLimit <=10){
-		useRequest(`https://picsum.photos/v2/list?page=${valuePage}&limit=${valueLimit}`, showResult)
+		useRequest(`https://picsum.photos/v2/list?page=${valuePage}&limit=${valueLimit}`, htmlResultTask5, showResult)
 		if (!errorMessageTask5.classList.contains('hidden')){
 			errorMessageTask5.classList.add('hidden')
 		}
@@ -46,34 +48,33 @@ function getPicture(e) {
 		errorMessageTask5.classList.remove('hidden')
 		errorMessageTask5.textContent = '! Ошибка, номер страницы и лимит вне диапазона от 1 до 10'
 	}
-
 }
 
-function useRequest(url, callback) {
+function useRequest(url, template, callback) {
 	fetch(url)
 		.then(response => response.json())
 		.then((data) => {
 			localStorage.setItem('temporaryJson', JSON.stringify(data));
-			return callback(data)})
+			return callback(data, template)})
 		.catch(() => console.log('error'))
 }
 
-function showResult(result){
+function showResult(result, template){
+	template.innerHTML = '';
 	result.forEach (elem => {
 		let jsonResult = `
 			<div class="result__box">
 				<img class="result__image" src="${elem.download_url}" width="500px">
 				<p class="result__author">${elem.author}</p>
 			</div>`;
-		htmlResultTask5.innerHTML += jsonResult
+			template.innerHTML += jsonResult
 	})
 }
-showPreviousData()
-function showPreviousData(){
+
+showPreviousData(htmlResultTask5, showResult)
+function showPreviousData(template, func){
 	let previousJson = localStorage.getItem('temporaryJson')
 	if (previousJson) {
-		showResult(JSON.parse(previousJson))
+		func(JSON.parse(previousJson), template)
 	}
-
 }
-

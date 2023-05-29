@@ -127,14 +127,12 @@
   font-weight: 700;
   color: rgb(196, 12, 12);
 }
-.task__result {
-  margin: 0 auto;
-}
 
 .result {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+  width: 100%;
 }
 .result__box {
   display: flex;
