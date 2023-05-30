@@ -12,25 +12,25 @@
 //? Решение
 
 //elements DOM
-const buttonTask4 = document.getElementById('buttonTask4')
-const errorMessageTask4 = document.getElementById('errorTask4')
-const htmlResultTask4 = document.getElementById('resultTask4')
+const button = document.getElementById('button')
+const errorMessage = document.getElementById('error')
+const htmlResult = document.getElementById('result')
 //button's behavior
-buttonTask4.addEventListener('click', getPicture)
+button.addEventListener('click', getPicture)
 //functions
 function getPicture(e) {
 	e.preventDefault();
-	let valueWidth = document.getElementById('inputWidthTask4').value;
-	let valueHeight = document.getElementById('inputHeightTask4').value
+	let valueWidth = document.getElementById('inputWidth').value;
+	let valueHeight = document.getElementById('inputHeight').value
 
 	if(valueWidth >= 100 && valueWidth <=300 &&
 		valueHeight >= 100 && valueHeight <=300){
 		useRequest(`https://picsum.photos/${valueWidth}/${valueHeight}`, showResult)
-		if (!errorMessageTask4.classList.contains('hidden')){
-			errorMessageTask4.classList.add('hidden')
+		if (!errorMessage.classList.contains('hidden')){
+			errorMessage.classList.add('hidden')
 		}
 	} else {
-		errorMessageTask4.classList.remove('hidden')
+		errorMessage.classList.remove('hidden')
 	}
 }
 
@@ -42,10 +42,10 @@ function useRequest(url, callback) {
 }
 
 function showResult(result){
-	htmlResultTask4.innerHTML = '';
+	htmlResult.innerHTML = '';
 		let resultImage = `
 			<div class="result__box">
 				<img class="result__image_task4" src="${result.url}">
 			</div>`;
-		htmlResultTask4.innerHTML = resultImage
+		htmlResult.innerHTML = resultImage
 }

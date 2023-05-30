@@ -20,33 +20,33 @@
 
 
 //elements DOM
-const buttonTask5 = document.getElementById('buttonTask5')
-const errorMessageTask5 = document.getElementById('errorMessageTask5')
-const htmlResultTask5 = document.getElementById('resultTask5')
+const button = document.getElementById('button')
+const errorMessage = document.getElementById('errorMessage')
+const htmlResult = document.getElementById('result')
 //button's behavior
-buttonTask5.addEventListener('click', getPicture)
+button.addEventListener('click', getPicture)
 
 //functions
 function getPicture(e) {
 	e.preventDefault();
-	let valuePage = document.getElementById('inputPageTask5').value;
-	let valueLimit = document.getElementById('inputLimitTask5').value;
+	let valuePage = document.getElementById('inputPage').value;
+	let valueLimit = document.getElementById('inputLimit').value;
 
 	if(valuePage > 0 && valuePage <=10 &&
 		valueLimit > 0 && valueLimit <=10){
-		useRequest(`https://picsum.photos/v2/list?page=${valuePage}&limit=${valueLimit}`, htmlResultTask5, showResult)
-		if (!errorMessageTask5.classList.contains('hidden')){
-			errorMessageTask5.classList.add('hidden')
+		useRequest(`https://picsum.photos/v2/list?page=${valuePage}&limit=${valueLimit}`, htmlResult, showResult)
+		if (!errorMessage.classList.contains('hidden')){
+			errorMessage.classList.add('hidden')
 		}
 	} else if(valuePage > 0 && valuePage <=10) {
-		errorMessageTask5.classList.remove('hidden')
-		errorMessageTask5.textContent = '! Ошибка, лимит вне диапазона от 1 до 10'
+		errorMessage.classList.remove('hidden')
+		errorMessage.textContent = '! Ошибка, лимит вне диапазона от 1 до 10'
 	} else if(valueLimit > 0 && valueLimit <=10) {
-		errorMessageTask5.classList.remove('hidden')
-		errorMessageTask5.textContent = '! Ошибка, номер страницы вне диапазона от 1 до 10'
+		errorMessage.classList.remove('hidden')
+		errorMessage.textContent = '! Ошибка, номер страницы вне диапазона от 1 до 10'
 	} else {
-		errorMessageTask5.classList.remove('hidden')
-		errorMessageTask5.textContent = '! Ошибка, номер страницы и лимит вне диапазона от 1 до 10'
+		errorMessage.classList.remove('hidden')
+		errorMessage.textContent = '! Ошибка, номер страницы и лимит вне диапазона от 1 до 10'
 	}
 }
 
@@ -71,7 +71,7 @@ function showResult(result, template){
 	})
 }
 
-showPreviousData(htmlResultTask5, showResult)
+showPreviousData(htmlResult, showResult)
 function showPreviousData(template, func){
 	let previousJson = localStorage.getItem('temporaryJson')
 	if (previousJson) {

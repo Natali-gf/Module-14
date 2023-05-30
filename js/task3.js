@@ -10,23 +10,23 @@
 //? Решение
 
 //elements DOM
-const buttonTask3 = document.getElementById('buttonTask3')
-const errorMessageTask3 = document.getElementById('errorTask3')
-const htmlResultTask3 = document.getElementById('resultTask3')
+const button = document.getElementById('button')
+const errorMessage = document.getElementById('error')
+const htmlResult = document.getElementById('result')
 //button's behavior
-buttonTask3.addEventListener('click', getPicture)
+button.addEventListener('click', getPicture)
 //functions
 function getPicture(e) {
 	e.preventDefault();
-	let value = document.getElementById('inputTask3').value
+	let value = document.getElementById('input').value
 
 	if(value > 0 && value <=10){
 		useRequest(`https://picsum.photos/v2/list?limit=${value}`, showResult)
-		if (!errorMessageTask3.classList.contains('hidden')){
-			errorMessageTask3.classList.add('hidden')
+		if (!errorMessage.classList.contains('hidden')){
+			errorMessage.classList.add('hidden')
 		}
 	} else {
-		errorMessageTask3.classList.remove('hidden')
+		errorMessage.classList.remove('hidden')
 	}
 
 }
@@ -53,13 +53,13 @@ function useRequest(url, callback) {
 }
 
 function showResult(result){
-	htmlResultTask3.innerHTML = '';
+	htmlResult.innerHTML = '';
 	result.forEach (elem => {
 		let jsonResult = `
 			<div class="result__box">
 				<img class="result__image" src="${elem.download_url}" width="500px">
 				<p class="result__author">${elem.author}</p>
 			</div>`;
-		htmlResultTask3.innerHTML += jsonResult
+		htmlResult.innerHTML += jsonResult
 	})
 }
